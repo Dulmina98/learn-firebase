@@ -1,12 +1,14 @@
 import "./auth.css"
-import {createUserWithEmailAndPassword} from "firebase/auth"
+import {createUserWithEmailAndPassword, signInWithPopup, signOut} from "firebase/auth"
 import {useState} from "react";
-import {auth} from "../config/firebase";
+import {auth, googleProvider} from "../config/firebase";
 
 export const Auth = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    console.log(auth?.currentUser?.photoURL)
 
     const signIn = async () => {
         try {
@@ -16,6 +18,23 @@ export const Auth = () => {
         }
 
     };
+
+    const logOut = async () => {
+        try {
+            await signOut(auth);
+        } catch (err) {
+            console.log(err);
+        }
+
+    };
+
+    const signInWithGoogle = async () => {
+        try {
+            await signInWithPopup(auth, googleProvider);
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
     return (
         <div className={"input-fields"}>
@@ -27,8 +46,12 @@ export const Auth = () => {
             </div>
             <div className={"input-item"}>
                 <button onClick={signIn}>Sign in</button>
+                <button onClick={logOut}>Log out</button>
             </div>
 
+            <div className="input-item">
+                <button onClick={signInWithGoogle}>Sign in with Google</button>
+            </div>
         </div>
     )
 }
