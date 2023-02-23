@@ -1,9 +1,10 @@
 import './App.css';
 import {Auth} from "./components/Auth";
-import {auth, db} from "./config/firebase"
+import {auth, db, storage} from "./config/firebase"
 import {useEffect, useState} from "react";
 import {addDoc, collection, getDocs} from "firebase/firestore"
 import {MovieItem} from "./components/MovieItem";
+import {ref, uploadBytes} from "firebase/storage"
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
     const [newMovieTitle, setNewMovieTitle] = useState("");
     const [newReleaseDate, setNewReleaseDate] = useState(0);
     const [newReceivedOscar, setNewReceivedOscar] = useState(false);
+    const [fileUpload, setFileUpload] = useState(null);
 
     const onsubmitMovie = async () => {
 
@@ -29,7 +31,6 @@ function App() {
             console.log(err)
         }
     }
-
 
     useEffect(() => {
         const getMovieList = async () => {
@@ -50,6 +51,18 @@ function App() {
         getMovieList();
     }, [onsubmitMovie]);
 
+    const uploadFile = async () => {
+        if (!fileUpload) return;
+        const filesFolderRef = ref(storage, `projectFiles/${fileUpload.name}`);
+
+        try {
+            await uploadBytes(filesFolderRef, fileUpload);
+        } catch (err) {
+            console.log(err);
+        }
+
+    }
+
 
     return (
         <div className="App">
@@ -69,6 +82,11 @@ function App() {
             <div>{movieList.map((movie) => (
                 <MovieItem movie={movie}/>
             ))}</div>
+
+            <div>
+                <input type="file" onChange={(e) => setFileUpload(e.target.files[0])}/>
+                <button onClick={uploadFile}>Submit File</button>
+            </div>
         </div>
     );
 }
