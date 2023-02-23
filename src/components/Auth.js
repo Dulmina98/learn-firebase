@@ -8,6 +8,8 @@ export const Auth = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const isUserLogin = auth?.currentUser;
+
     console.log(auth?.currentUser?.photoURL)
 
     const signIn = async () => {
@@ -38,20 +40,28 @@ export const Auth = () => {
 
     return (
         <div className={"input-fields"}>
+
+            {!isUserLogin ?
+                <>
+                    <div className={"input-item"}>
+                        <input placeholder={"Email"} onChange={(e) => setEmail(e.target.value)}/>
+                    </div>
+                    <div className={"input-item"}>
+                        <input type="password" placeholder={"Password"} onChange={(e) => setPassword(e.target.value)}/>
+                    </div>
+                </> : <div>
+                    {auth?.currentUser?.displayName}
+                </div>}
             <div className={"input-item"}>
-                <input placeholder={"Email"} onChange={(e) => setEmail(e.target.value)}/>
-            </div>
-            <div className={"input-item"}>
-                <input type="password" placeholder={"Password"} onChange={(e) => setPassword(e.target.value)}/>
-            </div>
-            <div className={"input-item"}>
-                <button onClick={signIn}>Sign in</button>
-                <button onClick={logOut}>Log out</button>
+                {!isUserLogin && <button onClick={signIn}>Sign in</button>}
+                {isUserLogin ?
+                    <button onClick={logOut}>Log out</button> : null}
             </div>
 
             <div className="input-item">
-                <button onClick={signInWithGoogle}>Sign in with Google</button>
+                {!isUserLogin && <button onClick={signInWithGoogle}>Sign in with Google</button>}
             </div>
+
         </div>
     )
 }
