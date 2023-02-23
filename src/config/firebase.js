@@ -4,13 +4,13 @@ import {getFirestore} from "firebase/firestore"
 import {getStorage} from "firebase/storage"
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDFYbZB8oyjNOkZc6gNsGVdJTZAymin6Pk",
-    authDomain: "learn-cloud-functions-firebase.firebaseapp.com",
-    projectId: "learn-cloud-functions-firebase",
-    storageBucket: "learn-cloud-functions-firebase.appspot.com",
-    messagingSenderId: "239924777020",
-    appId: "1:239924777020:web:39a58e01fa2d587fd4b339",
-    measurementId: "G-HENZ5EZ4NP"
+    apiKey: "AIzaSyDozEz-xUhqPbi9hvV6aMxqNXUTuMw9G_I",
+    authDomain: "learn-firebase-v2.firebaseapp.com",
+    projectId: "learn-firebase-v2",
+    storageBucket: "learn-firebase-v2.appspot.com",
+    messagingSenderId: "582329513043",
+    appId: "1:582329513043:web:94391807e21efdf6c802a6",
+    measurementId: "G-G2XPPBJQ61"
 };
 
 const app = initializeApp(firebaseConfig);
