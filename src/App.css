@@ -5,4 +5,22 @@
     justify-content: center;
     height: 100%;
     text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.submit-movie {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 400px;
+    margin: 0 auto;
+
+
+}
+
+input {
+    margin-bottom: 5px;
 }
