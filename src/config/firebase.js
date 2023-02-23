@@ -3,13 +3,13 @@ import {getAuth, GoogleAuthProvider} from 'firebase/auth'
 import {getFirestore} from "firebase/firestore"
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDvV1n7iwfnHr5HrdfadD0E0i60TlSUD8M",
-    authDomain: "learn-firebase-course.firebaseapp.com",
-    projectId: "learn-firebase-course",
-    storageBucket: "learn-firebase-course.appspot.com",
-    messagingSenderId: "227863067123",
-    appId: "1:227863067123:web:ef51630d3b418984d7ba86",
-    measurementId: "G-4JKX18HYEM"
+    apiKey: "AIzaSyDFYbZB8oyjNOkZc6gNsGVdJTZAymin6Pk",
+    authDomain: "learn-cloud-functions-firebase.firebaseapp.com",
+    projectId: "learn-cloud-functions-firebase",
+    storageBucket: "learn-cloud-functions-firebase.appspot.com",
+    messagingSenderId: "239924777020",
+    appId: "1:239924777020:web:39a58e01fa2d587fd4b339",
+    measurementId: "G-HENZ5EZ4NP"
 };
 
 const app = initializeApp(firebaseConfig);
